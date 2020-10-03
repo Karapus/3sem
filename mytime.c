@@ -56,9 +56,9 @@ int main (int argc, char* argv[]) {
 		char buffer[B_SIZE];
 		int cur, bc, wc, lc;
 		bc = wc = lc = 0;
+		char pc = '\0';
 		while ((cur = read(fd[0], buffer, B_SIZE)) > 0) {
 			bc += cur;
-			char pc = '\0';
 			for (char *c = buffer; c < buffer + cur; c++){
 				if (!isspace(pc) && pc && isspace(*c))
 					wc++;
