@@ -27,6 +27,8 @@ int split_cmd(char *cmd, char **argv) {
 		argv[i++] = cmd;
 		cmd = strtok(NULL, " \n");
 	}
+	if (!strcmp(argv[0], "quit"))
+		exit(0);
 	argv[i] = NULL;
 	return i;
 }
@@ -37,7 +39,7 @@ int main() {
 	do {
 		fdwrite(STDOUT_FILENO, PROMPT, strlen(PROMPT));
 		int res = fdreadline(STDIN_FILENO, buf, ARG_MAX);
-		if (strstr(buf, "quit") || buf[res] != '\n')
+		if (/*strstr(buf, "quit") || */buf[res] != '\n')
 			return 0;
 		buf[res + 1] = '\0';
 		char *cmd = buf;
