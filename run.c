@@ -26,7 +26,7 @@ int runner(int id, int n, int msq_id) {
 		perror("Msgsnd error:");
 		return errno;
 	}
-	if (msgrcv(msq_id, &mtype, 0, id, 0) < 0) {
+	if (msgrcv(msq_id, &mtype, 0, n + 2, 0) < 0) {
 		perror("Msgrcv error:");
 		return errno;
 	}
@@ -55,8 +55,8 @@ int judge(int n, int msq_id) {
 		return errno;
 	}
 	printf("judje announces time\n");
+	mtype = n + 2;
 	for (int i = 1; i <= n; i++) {
-		mtype = i;
 		if (msgsnd(msq_id, &mtype, 0, 0) < 0) {
 			perror("Msgrcv error:");
 			return errno;
