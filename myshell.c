@@ -4,6 +4,7 @@
 #include <sys/wait.h>
 #include <limits.h>
 #include <string.h>
+#include <stdlib.h>
 
 //maximum length of individual command
 #define ARG_MAX 1024
@@ -39,7 +40,7 @@ int main() {
 	do {
 		fdwrite(STDOUT_FILENO, PROMPT, strlen(PROMPT));
 		int res = fdreadline(STDIN_FILENO, buf, ARG_MAX);
-		if (/*strstr(buf, "quit") || */buf[res] != '\n')
+		if (res[buf] != '\n')
 			return 0;
 		buf[res + 1] = '\0';
 		char *cmd = buf;
