@@ -85,9 +85,6 @@ int main() {
 				perror("Exec error:");
 				return errno;
 			}	
-			int wstatus;
-			waitpid(-1, &wstatus, 0);
-			
 			next_in = fd[0];
 			
 			status = close(fd[1]);
@@ -100,6 +97,9 @@ int main() {
 		} while (cmd);
 		
 		fdecho(next_in, STDOUT_FILENO, buf, ARG_MAX + 1);
+		int wstatus;
+		waitpid(-1, &wstatus, 0);
+			
 	} while (1);
 }
 
