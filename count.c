@@ -73,7 +73,7 @@ int main(int argc, char **argv) {
 		n_last -= args.n;
 	}
 	struct args_t lastargs = {n_last, &number, &mutex};
-	pthread_create(ptid++, NULL, &count4, &lastargs);
+	pthread_create(ptid++, NULL, algs[alg - 1], &lastargs);
 	for (pthread_t *p = ptids; p < ptids + m; p++)
 		pthread_join(*p, NULL);
 	printf("%d\n", number);
