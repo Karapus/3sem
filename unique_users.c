@@ -62,5 +62,8 @@ int main(int argc, char **argv) {
 			printf("%s\n", buf);
 		strcpy(prev, buf);
 	}
-	wait(-1);
+	if (wait(NULL) < 0) {
+		perror("Child error: ");
+		return errno;
+	}
 }
