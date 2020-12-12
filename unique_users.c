@@ -52,7 +52,6 @@ int main(int argc, char **argv) {
 		perror("Close error: ");
 		return errno;
 	}
-	wait(-1);
 	char buf[BUF_SIZE + 1];
 	char prev[BUF_SIZE + 1];
 	buf[BUF_SIZE] = '\0';
@@ -63,4 +62,5 @@ int main(int argc, char **argv) {
 			printf("%s\n", buf);
 		strcpy(prev, buf);
 	}
+	wait(-1);
 }
