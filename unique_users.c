@@ -53,8 +53,8 @@ int main(int argc, char **argv) {
 		return errno;
 	}
 	wait(-1);
-	char *buf[BUF_SIZE + 1];
-	char *prev[BUF_SIZE + 1];
+	char buf[BUF_SIZE + 1];
+	char prev[BUF_SIZE + 1];
 	buf[BUF_SIZE] = '\0';
 	prev[BUF_SIZE] = '\0';
 	while (fdreadline(fds[0], buf, BUF_SIZE)) {
