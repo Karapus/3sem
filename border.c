@@ -22,7 +22,9 @@ void border(int sig) {
 int main() {
 	setvbuf(stdout, NULL, _IONBF, 0);
 	border(1);
-	signal(SIGWINCH, border);
+	struct sigaction chng_ws= { border, 0, 0, NULL};
+	if (sigaction(SIGWINCH, chng_ws, NULL) < 0)
+		perror();
 	while (1)
 		pause();
 }
