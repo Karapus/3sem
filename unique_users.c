@@ -78,7 +78,8 @@ int main(int argc, char **argv) {
 		printf("%s\n", first_word);
 		strtok(NULL, "\n");
 		for (char *second_word = strtok(NULL, " "); strtok(NULL, "\n"); second_word = strtok(NULL, " ")) {
-			if (!strcmp(first_word, second_word))
+//			if (!strcmp(first_word, second_word))
+			printf("%s\n", first_word);
 				printf("%s\n", second_word);
 			first_word = second_word;
 		}
